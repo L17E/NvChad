@@ -47,6 +47,10 @@ local plugins = {
     end,
   },
 
+  {
+    "mattn/efm-langserver",
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

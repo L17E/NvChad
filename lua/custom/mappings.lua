@@ -1,20 +1,28 @@
+---@diagnostic disable: assign-type-mismatch
 ---@type MappingsTable
-local M = {}
+local M = require('custom.overrides');
 
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    ["<leader>sf"] = { "<cmd>w<cr>", "Save File" },
-    ["<leader>sa"] = { "<cmd>wall<cr>", "Save All" },
+
+    ["<leader>sf"] = { "<cmd>w<cr>", "write file" }, -- Ctrl + S
+    ["<leader>sa"] = { "<cmd>wall<cr>", "save all" },
+
+    ["<leader>w"] = { "<cmd>close<cr>", "close window"}
   },
 }
 
+M.nvterm = {
+  n = {
+    ["<leader>h"] = { "<cmd>split<cr>", "horizontal split" },
+    ["<leader>v"] = { "<cmd>vsplit<cr>", "vertical split" },
+  }
+}
 
 M.nvimtree = {
-  plugin = true,
-
   n = {
-    ["<leader>e"] = { "<cmd> NvimTreeToggle <cr>", "Toggle Explorer" },
+    ["<leader>e"] = { "<cmd> NvimTreeToggle <cr>", "toggle explorer" },
     ["<leader>o"] = {
       function()
         if vim.bo.filetype == "NvimTree" then
@@ -23,9 +31,10 @@ M.nvimtree = {
           vim.cmd "NvimTreeFocus"
         end
       end,
-      "Toggle Explorer Focus",
+      "toggle explorer focus",
     },
   },
 }
 
-return M
+
+return M;
