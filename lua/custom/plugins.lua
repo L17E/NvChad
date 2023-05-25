@@ -1,7 +1,37 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
+
+  -- Install a plugin
+  {
+    "max397574/better-escape.nvim",
+    event = "InsertEnter",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
+
+  { "mattn/efm-langserver" },
+
+  { "iamcco/coc-tailwindcss" },
+
+  -- {
+  --   "Pocco81/AutoSave.nvim",
+  --   lazy = false,
+  -- },
+
+  {
+    "Pocco81/auto-save.nvim",
+    lazy = false,
+    condition = function(buf)
+      local fn = vim.fn
+      local undotree = vim.fn.undotree()
+      if undotree.seq_last ~= undotree.seq_cur then
+        return false -- don't try to save again if I tried to undo. k thanks
+      end
+    end,
+  },
 
   -- Override plugin definition options
 
@@ -25,7 +55,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -36,19 +66,6 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
-  },
-
-  -- Install a plugin
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
-
-  {
-    "mattn/efm-langserver",
   },
 
   -- To make a plugin not be loaded
