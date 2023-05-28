@@ -14,24 +14,24 @@ local plugins = {
 
   { "mattn/efm-langserver" },
 
-  { "iamcco/coc-tailwindcss" },
+  -- { "iamcco/coc-tailwindcss" },
 
   -- {
   --   "Pocco81/AutoSave.nvim",
   --   lazy = false,
   -- },
 
-  {
-    "Pocco81/auto-save.nvim",
-    lazy = false,
-    condition = function(buf)
-      local fn = vim.fn
-      local undotree = vim.fn.undotree()
-      if undotree.seq_last ~= undotree.seq_cur then
-        return false -- don't try to save again if I tried to undo. k thanks
-      end
-    end,
-  },
+  -- {
+  --   "Pocco81/auto-save.nvim",
+  --   lazy = false,
+  --   condition = function(buf)
+  --     local fn = vim.fn
+  --     local undotree = vim.fn.undotree()
+  --     if undotree.seq_last ~= undotree.seq_cur then
+  --       return false -- don't try to save again if I tried to undo. k thanks
+  --     end
+  --   end,
+  -- },
 
   -- Override plugin definition options
 

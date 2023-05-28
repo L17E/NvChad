@@ -6,8 +6,10 @@ M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
 
-    -- ["<leader>sf"] = { "<cmd>w<cr>", "write file" }, -- Ctrl + S
-    -- ["<leader>sa"] = { "<cmd>wall<cr>", "save all" },
+    ["<C-v>"] = { "<cmd> p <CR>", "paste" },
+
+    ["s"] = { "<cmd>w<cr>", "save file" },
+    ["<leader>s"] = { "<cmd>wall<cr>", "save all" },
 
     ["<leader>w"] = { "<cmd>close<cr>", "close window" },
   },
